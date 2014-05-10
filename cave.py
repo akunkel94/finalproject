@@ -2,7 +2,7 @@ class Item:
     """An object"""
 
     def __init__(data):
-        self.description = data['desc']
+        self.description = data
 
     def __str___(self):
         return self.description
@@ -12,12 +12,15 @@ class Room:
     """A single room"""
 
     def __init__(self, data):
+        self.name = name
         self.description = data['desc']
         for key,value in data.items():
             self.rooms[key] = Room(data[key])
 
     def __str__(self):
         return self.description.format("\n%".join(str(room) for name,room in self.rooms.items()]))
+    
+    
 
 
 class Inventory: 
