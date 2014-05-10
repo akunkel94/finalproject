@@ -1,7 +1,8 @@
-The project our group is doing is going to be in the form of the Python Adventure Game program we did in class.
-It is going to have similar elements, but we're going to make it a more of a maze. We're still not sure whether we want to use python or C++.
-The maze is going to contain rooms and items and we will try to make an inventory for the user that will interact with other items or rooms in one way or another. 
+You wake up in a pitch black room and with nothing in your pocket, the first thing you need to do is find a light source. Soon you find yourself in a large cavern. With darkness closing in and eerie noises, you must escape this cave maze before it's too late!
 
 <!-- more -->  mitchell mitchell mitchell
 
-
+The project our group is doing is going to contain similar elements to the Python Adventure Game we worked on in class. It will contain 
+similar elements but we're going to make it more of a maze. We're debating whether to use C++ or Python and the maze will contain rooms and
+items that interact with each other. Python seems to be better for implementing the UNIX design philosophies learned in class for this kind 
+of project so that's what we will most likely be working with. 
