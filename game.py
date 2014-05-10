@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import world as world
+import cave as cave
 import yaml as yaml
 
 data = yaml.load( open('rooms.yaml', 'r') )
-myworld = world.World( data, 'SURGE 104C' )
-print(myworld)
+mycave = cave.World( data, 'Old Coal Cave' )
+print(mycave)
