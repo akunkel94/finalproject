@@ -16,13 +16,14 @@ class Room:
         self.description = data['desc']
         self._items = []
         
-        for item in data[items]
+        for item in data[items]:
+            pass
             self._items.append(Item(item))
         self.dirs = {}
 
 
     def __str__(self):
-        return self.description.format("\n%".join(str(room) for name,room in self.rooms.items()]))
+        return self.description.format("\n%".join(str(room) for name,room in self.rooms.items()))
         
 
 
