@@ -3,6 +3,6 @@ You wake up in a pitch black room and with nothing in your pocket, the first thi
 <!-- more --> 
 
 The project our group is doing is going to contain similar elements to the Python Adventure Game we worked on in class. It will contain 
-similar elements but we're going to make it more of a maze. We're debating whether to use C++ or Python and the maze will contain rooms and
+similar elements but we're going to make it more of a maze. We're debating whether to use C++ and the maze will contain rooms and
 items that interact with each other. Python seems to be better for implementing the UNIX design philosophies learned in class for this kind 
 of project so that's what we will most likely be working with. 
