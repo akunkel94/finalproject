@@ -2,10 +2,10 @@ class Item:
     """An object"""
 
     def __init__(data):
-        self.description = data
+        self.item = data
 
     def __str___(self):
-        return self.description
+        return self.item
 
 
 class Room:
@@ -14,13 +14,17 @@ class Room:
     def __init__(self, data):
         self.name = name
         self.description = data['desc']
-        for key,value in data.items():
-            self.rooms[key] = Room(data[key])
+        self._items = []
+        
+        for item in data[items]
+            self._items.append(Item(item))
+        self.dirs = {}
+
 
     def __str__(self):
         return self.description.format("\n%".join(str(room) for name,room in self.rooms.items()]))
-    
-    
+        
+
 
 
 class Inventory: 
@@ -31,10 +35,7 @@ class Inventory:
 
     def __str__(self):
         str_inv = [str(item) for item in self._inv]
-        if not str_inv:
-            return "No items in inventory"
-        else:
-            return "Your inventory contains " + ", ".join(str_inv)
+        return str_inv
 
 
 class Cave:
