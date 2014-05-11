@@ -5,3 +5,5 @@
 -decide on objects for the rooms, where they'll be placed, and how they'll be used
 
 -write any story pieces for the game including intro, outro and middle bits
+
+-test to see if I can push this
