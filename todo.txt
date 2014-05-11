@@ -1,0 +1,9 @@
+-create a map so we know which rooms lead to which rooms (this won't be used in the game (or it could be, your choice))
+
+-decide on room names
+
+-decide on objects for the rooms, where they'll be placed, and how they'll be used
+
+-write any story pieces for the game including intro, outro and middle bits
+
+-test to see if I can push this
