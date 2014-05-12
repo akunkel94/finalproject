@@ -46,7 +46,7 @@ This record would read:
 
 You have entered the dynamite storage room. This is the room that used to be
 used for storing dynamite.  You see a FUSE on the ground.  You also see a
-chest. To the North is the ELEVATOR SHAFT. To the East is the MINE FACE. You
+CHEST. To the North is the ELEVATOR SHAFT. To the East is the MINE FACE. You
 need a PICKAXE to go that way. To the South you see the LAMP ROOM.
 
 >>> search CHEST

@@ -1,0 +1,84 @@
+LARGE CAVERN
+You are in a large, dark cavern. You see a faint light to the EAST. You see a door to the SOUTH, and the outline of a dark doorway to the NORTH.
+0
+0
+0
+STORAGE ROOM
+FLASHLIGHT
+MINERS TUNNEL
+0
+SMALL CAVERN
+KEY
+0
+0
+
+MINERS TUNNEL
+You enter a long tunnel with a light at the EAST end of the tunnel. You see a flashlight on the ground on the SOUTH wall.
+FLASHLIGHT
+0
+0
+0
+0
+ELEVATOR SHAFT
+0
+0
+0
+LARGE CAVERN
+0
+
+ELEVATOR SHAFT
+You step onto a crude elevator. It doesn't seem to be working. There might be a part to fix it with around this mine.
+0
+0
+0
+0
+0
+0
+0
+0
+0
+MINERS TUNNEL
+0
+
+STORAGE ROOM
+You find a room which seems to have been used for storage at some point. You see some lockers on the EAST wall. You also see a KEY lying on the table.
+KEY
+LOCKERS
+PICKAXE
+0
+0
+0
+0
+LARGE CAVERN
+0
+0
+0
+
+SMALL CAVERN
+You enter a small cavern which is filled with rubble. You see that the rubble on the WEST wall seems to be blocking something.
+0
+0
+0
+LARGE CAVERN
+0
+0
+0
+0
+0
+FUSE ROOM
+PICKAXE
+
+FUSE ROOM
+You enter what looks like a control room of sorts. You see a FUSE lying on the ground.
+FUSE
+0
+0
+0
+0
+SMALL CAVERN
+0
+0
+0
+0
+0
+

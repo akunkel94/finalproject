@@ -1,0 +1,7 @@
+These are the commands you are able to use:
+
+	- Go [north, south, east, west]
+	- Take [item]
+	- Search [searchable object]
+	- help (accesses this page)
+
