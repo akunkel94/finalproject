@@ -18,21 +18,21 @@ FLASHLIGHT
 0
 0
 0
-ELEVATOR SHAFT
+ELEVATOR ROOM
 0
 0
 0
 LARGE CAVERN
 0
-ELEVATOR SHAFT
-You step onto a crude elevator. It doesn't seem to be working. There might be a part to fix it with around this mine.
+ELEVATOR ROOM
+You enter a room with an elevator to the EAST. It doesn't seem to be working. Maybe there's a part around here to fix it.
 0
 0
 0
 0
 0
-0
-0
+ELEVATOR
+FUSE
 0
 0
 MINERS TUNNEL
@@ -71,6 +71,19 @@ FUSE
 0
 0
 SMALL CAVERN
+0
+0
+0
+0
+0
+ELEVATOR
+You have entered the elevator and used the FUSE to start it up. 
+0
+0
+0
+0
+0
+0
 0
 0
 0
