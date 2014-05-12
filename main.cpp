@@ -17,6 +17,8 @@ enum commands {help, search, take,  go};
 commands switchCommand(string command);
 void dispText(istream& in, ostream& out);
 
+commands switchCommand
+
 void dispText(istream& in, ostream& out)
 {
 	string line;
