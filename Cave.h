@@ -60,3 +60,23 @@ void Cave::init(istream& in)
 }
 
 #endif
+
+if(input=="NORTH" && northRoom!="0")
+{
+	if(northItem != "0")
+	{
+		haveItem = false;
+		for(int i=0; i<inventoryIndex && !haveItem; i++)
+			haveItem = (inventory[i]==northItem);
+	}
+	
+	if(haveItem)
+	{
+		currentRoom = findRoom(northRoom);
+		
+		out << endl;
+		out << this->currentRoom;
+	}
+	else
+		out << "\nYou can't go into that room yet." << endl;
+}
