@@ -13,21 +13,22 @@ using std::ostream;
 class Room
 {
 private:
-	string name;
-	string desc;
-	string item;
-	string container;
-	string containerItem;
-	string northRoom;
-	string northItem;
-	string eastRoom;
-	string eastItem;
-	string southRoom;
-	string southItem;
-	string westRoom;
-	string westItem;
 
 public:
+	string name;
+        string desc;
+        string item;
+        string container;
+        string containerItem;
+        string northRoom;
+        string northItem;
+        string eastRoom;
+        string eastItem;
+        string southRoom;
+        string southItem;
+        string westRoom;
+        string westItem;
+
 	Room(string name, string desc, string item, string container, string containerItem, string northRoom, string northItem, string eastRoom, string eastItem, string southRoom, string southItem, string westRoom, string westItem);
 	string getName() const;
 	string getItem() const;

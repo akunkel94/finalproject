@@ -2,9 +2,11 @@
 #define CAVE_H
 
 #include "Room.h"
+#include <istream>
 #include <iostream>
 #include <string>
 
+using std::istream;
 using std::string;
 using std::endl;
 
@@ -12,7 +14,7 @@ class Cave
 {
 private:
 	Room rooms[100];
-	roomIndex = 0;
+	int roomIndex;
 	Room* currentRoom, endRoom;
 public:
 	Cave();
@@ -27,6 +29,8 @@ Cave::Cave() {}
 
 void Cave::init(istream& in)
 {
+	roomIndex = 0;
+
 	string name;
         string desc;
         string item;
