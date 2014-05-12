@@ -6,6 +6,7 @@
 #include <string>
 
 using std::string;
+using std::endl;
 using std::stringstream;
 using std::ostream;
 
@@ -28,11 +29,15 @@ private:
 
 public:
 	Room(string name, string desc, string item, string container, string containerItem, string northRoom, string northItem, string eastRoom, string eastItem, string southRoom, string southItem, string westRoom, string westItem);
+	string getName() const;
 	string getItem() const;
 	string getContainer() const;
 	string getContainerItem() const;
+	string getRoom(string direction) const;
+	string getRoomItem(string direction) const;
 
-	string takeItem();
+	string take(string input, ostream& out);
+	string search(string input, ostream& out);
 
 	friend ostream& operator<<(ostream& out, const Room& rhs);
 };
@@ -53,6 +58,11 @@ Room::Room(string name, string desc, string item, string container, string conta
 	this->westItem = westItem;
 }
 
+string Room::getName() const
+{
+	return name;
+}
+
 string Room::getItem() const
 {
 	return item;
@@ -68,10 +78,92 @@ string Room::getContainerItem() const
 	return containerItem;
 }
 
-string Room::takeItem()
+string Room::getRoom(string direction) const
 {
-	string temp = item;
-	item = "0";
+	string out = "0";
+
+	if(direction == "NORTH")
+		out = northRoom;
+	else if(direction == "EAST")
+		out = eastRoom;
+	else if(direction == "SOUTH")
+		out = southRoom;
+	else if(direction == "WEST")
+		out = westRoom;
+
+	return out;
+}
+
+string Room::getRoomItem(string direction) const
+{
+	string out = "0";
+
+        if(direction == "NORTH")
+                out = northItem;
+        else if(direction == "EAST")
+                out = eastItem;
+        else if(direction == "SOUTH")
+                out = southItem;
+        else if(direction == "WEST")
+                out = westItem;
+
+        return out;
+}
+
+
+
+string Room::take(string input, ostream& out)
+{
+	string temp = "0";
+	input = input.substr(5, input.length()-5);
+
+	if(item == "0")
+		out << "\nThere is nothing here to take." << endl;
+	else if(input == item)
+	{
+		temp = item;
+		item = "0";
+
+		out << "\nYou take the ";
+		out << temp;
+		out << " and add it to your inventory." << endl;
+	}
+	else
+		out << "\nYou can't take that." << endl;
+
+	return temp;
+}
+
+string Room::search(string input, ostream& out)
+{
+	string temp = "0";
+	input = input.substr(7, input.length()-7);
+
+	if(input == container)
+	{
+		if(containerItem == "0")
+		{
+			out << "\nThe ";
+			out << container;
+			out << " is empty." << endl;
+		}
+		else
+		{
+			out << "\nYou search the ";
+			out << container;
+			out << ". You found a ";
+			out << containerItem;
+			out << " and add it to your inventory." << endl;
+
+			temp = containerItem;
+			containerItem = "0";
+		}
+	}
+	else
+	{
+		out << "\nThere isn't one of those to search in this room." << endl;
+	}
+
 	return temp;
 }
 

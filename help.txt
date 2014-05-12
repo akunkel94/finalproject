@@ -1,7 +1,8 @@
 These are the commands you are able to use:
 
-	- Go [north, south, east, west]
-	- Take [item]
-	- Search [searchable object]
+	- go [NORTH, SOUTH, EAST, WEST]
+	- take [ITEM]
+	- search [SEARCHABLE OBJECT]
 	- help (accesses this page)
 
+Remember, commands are CASE-SENSITIVE. All object, items, and directions will always be uppercase.
