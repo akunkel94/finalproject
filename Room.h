@@ -6,6 +6,7 @@
 #include <string>
 
 using std::string;
+using std::endl;
 using std::stringstream;
 using std::ostream;
 
@@ -32,7 +33,8 @@ public:
 	string getContainer() const;
 	string getContainerItem() const;
 
-	string takeItem();
+	string take(string input, ostream& out);
+	string search(string input, ostream& out);
 
 	friend ostream& operator<<(ostream& out, const Room& rhs);
 };
@@ -68,10 +70,58 @@ string Room::getContainerItem() const
 	return containerItem;
 }
 
-string Room::takeItem()
+string Room::take(string input, ostream& out)
 {
-	string temp = item;
-	item = "0";
+	string temp = "0";
+	input = input.substr(5, input.length()-5);
+
+	if(item == "0")
+		out << "\nThere is nothing here to take." << endl;
+	else if(input == item)
+	{
+		temp = item;
+		item = "0";
+
+		out << "\nYou take the ";
+		out << temp;
+		out << " and add it to your inventory." << endl;
+	}
+	else
+		out << "\nYou can't take that." << endl;
+
+	return temp;
+}
+
+string Room::search(string input, ostream& out)
+{
+	string temp = "0";
+	input = input.substr(7, input.length()-7);
+
+	if(input == container)
+	{
+		if(containerItem == "0")
+		{
+			out << "\nThe ";
+			out << container;
+			out << " is empty." << endl;
+		}
+		else
+		{
+			out << "\nYou search the ";
+			out << container;
+			out << ". You found a ";
+			out << containerItem;
+			out << " and add it to your inventory." << endl;
+
+			temp = containerItem;
+			containerItem = "0";
+		}
+	}
+	else
+	{
+		out << "\nThere isn't one of those to search in this room." << endl;
+	}
+
 	return temp;
 }
 
