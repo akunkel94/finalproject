@@ -29,9 +29,12 @@ private:
 
 public:
 	Room(string name, string desc, string item, string container, string containerItem, string northRoom, string northItem, string eastRoom, string eastItem, string southRoom, string southItem, string westRoom, string westItem);
+	string getName() const;
 	string getItem() const;
 	string getContainer() const;
 	string getContainerItem() const;
+	string getRoom(string direction) const;
+	string getRoomItem(string direction) const;
 
 	string take(string input, ostream& out);
 	string search(string input, ostream& out);
@@ -55,6 +58,11 @@ Room::Room(string name, string desc, string item, string container, string conta
 	this->westItem = westItem;
 }
 
+string Room::getName() const
+{
+	return name;
+}
+
 string Room::getItem() const
 {
 	return item;
@@ -69,6 +77,40 @@ string Room::getContainerItem() const
 {
 	return containerItem;
 }
+
+string Room::getRoom(string direction) const
+{
+	string out = "0";
+
+	if(direction == "NORTH")
+		out = northRoom;
+	else if(direction == "EAST")
+		out = eastRoom;
+	else if(direction == "SOUTH")
+		out = southRoom;
+	else if(direction == "WEST")
+		out = westRoom;
+
+	return out;
+}
+
+string Room::getRoomItem(string direction) const
+{
+	string out = "0";
+
+        if(direction == "NORTH")
+                out = northItem;
+        else if(direction == "EAST")
+                out = eastItem;
+        else if(direction == "SOUTH")
+                out = southItem;
+        else if(direction == "WEST")
+                out = westItem;
+
+        return out;
+}
+
+
 
 string Room::take(string input, ostream& out)
 {
