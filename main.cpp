@@ -89,6 +89,8 @@ int main()
 	cout << endl;
 	dispText(inOutro, cout);
 
+	cave.destruct();
+
 	return 0;
 }
 

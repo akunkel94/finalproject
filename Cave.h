@@ -15,14 +15,16 @@ class Cave
 private:
 	Room* rooms[100];
 	int roomIndex;
-	Room* currentRoom, endRoom;
+	Room* currentRoom;
+	Room* endRoom;
 public:
 	Cave();
 	void init(istream& in);
 
 	bool gameover();
-	Room findRoom(string name);
-	Room go(string input, string inventory[], int inventoryIndex, ostream& out); 
+	Room* findRoom(string name);
+	Room go(string input, string inventory[], int inventoryIndex, ostream& out);
+	void destruct();
 };
 
 Cave::Cave() {}
@@ -45,7 +47,7 @@ void Cave::init(istream& in)
         string westRoom;
         string westItem;
 
-	Room r;
+	Room* r;
 
 	getline(in, name, '\n');
 	while(!in.fail() && !in.eof())
@@ -63,7 +65,7 @@ void Cave::init(istream& in)
 		getline(in, westRoom, '\n');
 		getline(in, westItem, '\n');
 
-		r = Room(name, desc, item, container, containerItem, northRoom, northItem, eastRoom, eastItem, southRoom, southItem, westRoom, westItem);
+		r = new Room(name, desc, item, container, containerItem, northRoom, northItem, eastRoom, eastItem, southRoom, southItem, westRoom, westItem);
 
 		rooms[roomIndex] = r;
 		roomIndex++;
@@ -77,16 +79,16 @@ void Cave::init(istream& in)
 
 bool Cave::gameover()
 {
-	return (currentRoom == endRoom);
+	return (currentRoom->getName() == endRoom->getName());
 }
 
-Room Cave::findRoom(string name)
+Room* Cave::findRoom(string name)
 {
 	for(int i=0; i<roomIndex; i++)
-		if(rooms[i].getName() == this->currentRoom.getName())
+		if(rooms[i]->getName() == currentRoom->getName())
 			currentRoom = rooms[i];
 
-	return this->currentRoom;
+	return currentRoom;
 }
 
 Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out)
@@ -177,6 +179,17 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
 		}
 		else
 			out << "\nThere is no room in that direction." << endl;
+	}
+}
+
+void Cave::destruct()
+{
+	Room* temp;
+
+	for(int i=0; i<roomIndex; i++)
+	{
+		temp = rooms[i];
+		delete temp;
 	}
 }
 

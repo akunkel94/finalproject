@@ -29,6 +29,7 @@ public:
         string westRoom;
         string westItem;
 
+	Room();
 	Room(string name, string desc, string item, string container, string containerItem, string northRoom, string northItem, string eastRoom, string eastItem, string southRoom, string southItem, string westRoom, string westItem);
 	string getName() const;
 	string getItem() const;
@@ -42,6 +43,8 @@ public:
 
 	friend ostream& operator<<(ostream& out, const Room& rhs);
 };
+
+Room::Room() {}
 
 Room::Room(string name, string desc, string item, string container, string containerItem, string northRoom, string northItem, string eastRoom, string eastItem, string southRoom, string southItem, string westRoom, string westItem)
 {
@@ -170,87 +173,98 @@ string Room::search(string input, ostream& out)
 
 ostream& operator<<(ostream& out, const Room& rhs)
 {
-	stringstream ss;
+	string name, item, container, northRoom, northItem, southRoom, southItem, eastRoom, eastItem, westRoom, westItem;
+	name = rhs.getName();
+	item = rhs.getItem();
+	container = rhs.getContainer();
+        northRoom = rhs.getRoom("NORTH");
+        southRoom = rhs.getRoom("SOUTH");
+        eastRoom = rhs.getRoom("EAST");
+        westRoom = rhs.getRoom("WEST");
+        northItem = rhs.getRoomItem("NORTH");
+        southItem = rhs.getRoomItem("SOUTH");
+        eastItem = rhs.getRoomItem("EAST");
+        westItem = rhs.getRoomItem("WEST");
 
-	ss << "You have entered the ";
-	ss << name;
-	ss << ".";
+	out << "You have entered the ";
+	out << name;
+	out << ".";
 	if(item != "0")
 	{
-		ss << " You see a ";
-		ss << item;
-		ss << " on the ground.";
+		out << " You see a ";
+		out << item;
+		out << " on the ground.";
 	}
 	if(container != "0" && item != "0")
 	{
-		ss << " You also see a ";
-		ss << container;
-		ss << ".";
+		out << " You also see a ";
+		out << container;
+		out << ".";
 	}
 	else if(container != "0")
 	{
-		ss << " You see a ";
-		ss << container;
-		ss << ".";
+		out << " You see a ";
+		out << container;
+		out << ".";
 	}
 
 	if(northRoom != "0")
 	{
-		ss << " To the NORTH is the ";
-		ss << northRoom;
-		ss << ".";
+		out << " To the NORTH is the ";
+		out << northRoom;
+		out << ".";
 
 		if(northItem != "0")
 		{
-			ss << "You need a ";
-			ss << northItem;
-			ss << " to go that way.";
+			out << "You need a ";
+			out << northItem;
+			out << " to go that way.";
 		}
 	}
 
 	if(eastRoom != "0")
         {
-                ss << " To the EAST is the ";
-                ss << eastRoom;
-                ss << ".";
+		out << " To the EAST is the ";
+                out << eastRoom;
+                out << ".";
 
                 if(eastItem != "0")
                 {
-                        ss << "You need a ";
-                        ss << eastItem;
-                        ss << " to go that way.";
+                        out << "You need a ";
+                        out << eastItem;
+                        out << " to go that way.";
 		}
         }
 
 	if(southRoom != "0")
         {
-                ss << " To the SOUTH is the ";
-                ss << southRoom;
-                ss << ".";
+                out << " To the SOUTH is the ";
+                out << southRoom;
+                out << ".";
 
                 if(southItem != "0")
                 {
-                        ss << "You need a ";
-                        ss << southItem;
-                        ss << " to go that way.";
+                        out << "You need a ";
+                        out << southItem;
+                        out << " to go that way.";
 		}
         }
 
 	if(westRoom != "0")
         {
-                ss << " To the WEST is the ";
-                ss << westRoom;
-                ss << ".";
+                out << " To the WEST is the ";
+                out << westRoom;
+                out << ".";
 
                 if(westItem != "0")
                 {
-                        ss << "You need a ";
-                        ss << westItem;
-                        ss << " to go that way.";
+                        out << "You need a ";
+                        out << westItem;
+                        out << " to go that way.";
 		}
         }
 
-	return out << ss.str();
+	return out;
 }
 
 #endif
