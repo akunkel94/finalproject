@@ -5,6 +5,7 @@
 #include <istream>
 #include <iostream>
 #include <string>
+#include <stdio.h>
 
 using std::istream;
 using std::string;

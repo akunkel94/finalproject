@@ -1,16 +1,21 @@
 #include "Cave.h"
 #include "Room.h"
+#include <stdio.h>
 #include <fstream>
 #include <ostream>
 #include <iostream>
 #include <string>
 
+using std::*;
+
+/*
 using std::ifstream;
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 using std::stringstream;
+*/
 
 enum commands {help, search, take,  go};
 
