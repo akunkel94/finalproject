@@ -13,7 +13,7 @@ using std::endl;
 class Cave
 {
 private:
-	Room rooms[100];
+	Room* rooms[100];
 	int roomIndex;
 	Room* currentRoom, endRoom;
 public:
@@ -83,23 +83,24 @@ bool Cave::gameover()
 Room Cave::findRoom(string name)
 {
 	for(int i=0; i<roomIndex; i++)
-		if(room
+		if(rooms[i].getName() == this->currentRoom.getName())
+			currentRoom = rooms[i];
 
-	return currentRoom;
+	return this->currentRoom;
 }
 
 Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out)
 {
 	input = input.substr(3, input.length()-3);
 	string northRoom, northItem, southRoom, southItem, eastRoom, eastItem, westRoom, westItem;
-	northRoom = this->currentRoom.getRoom("NORTH");
-	southRoom = this->currentRoom.getRoom("SOUTH");
-	eastRoom = this->currentRoom.getRoom("EAST");
-	westRoom = this->currentRoom.getRoom("WEST");
-	northItem = this->currentRoom.getRoomItem("NORTH");
-	southItem = this->currentRoom.getRoomItem("SOUTH");
-	eastItem = this->currentRoom.getRoomItem("EAST");
-	westItem = this->currentRoom.getRoomItem("WEST");
+	northRoom = currentRoom->getRoom("NORTH");
+	southRoom = currentRoom->getRoom("SOUTH");
+	eastRoom = currentRoom->getRoom("EAST");
+	westRoom = currentRoom->getRoom("WEST");
+	northItem = currentRoom->getRoomItem("NORTH");
+	southItem = currentRoom->getRoomItem("SOUTH");
+	eastItem = currentRoom->getRoomItem("EAST");
+	westItem = currentRoom->getRoomItem("WEST");
 
 	if(input != "NORTH" && input != "SOUTH" && input != "EAST" && input != "WEST")
 		out << "\nThat is not a direction you can go." << endl;
@@ -112,7 +113,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
 			{
 				haveItem = false;
 				for(int i=0; i<inventoryIndex && !haveItem; i++)
-					haveItem = (northItem == inventory[i])
+					haveItem = (northItem == inventory[i]);
 			}
 			if(haveItem)
 			{
@@ -129,7 +130,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 haveItem = false;
                                 for(int i=0; i<inventoryIndex && !haveItem; i++)
-                                        haveItem = (eastItem == inventory[i])
+                                        haveItem = (eastItem == inventory[i]);
                         }
                         if(haveItem)
                         {
@@ -146,7 +147,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 haveItem = false;
                                 for(int i=0; i<inventoryIndex && !haveItem; i++)
-                                        haveItem = (southItem == inventory[i])
+                                        haveItem = (southItem == inventory[i]);
                         }
                         if(haveItem)
                         {
@@ -163,7 +164,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 haveItem = false;
                                 for(int i=0; i<inventoryIndex && !haveItem; i++)
-                                        haveItem = (westItem == inventory[i])
+                                        haveItem = (westItem == inventory[i]);
                         }
                         if(haveItem)
                         {

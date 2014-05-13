@@ -205,6 +205,7 @@ ostream& operator<<(ostream& out, const Room& rhs)
 			ss << "You need a ";
 			ss << northItem;
 			ss << " to go that way.";
+		}
 	}
 
 	if(eastRoom != "0")
@@ -218,6 +219,7 @@ ostream& operator<<(ostream& out, const Room& rhs)
                         ss << "You need a ";
                         ss << eastItem;
                         ss << " to go that way.";
+		}
         }
 
 	if(southRoom != "0")
@@ -231,6 +233,7 @@ ostream& operator<<(ostream& out, const Room& rhs)
                         ss << "You need a ";
                         ss << southItem;
                         ss << " to go that way.";
+		}
         }
 
 	if(westRoom != "0")
@@ -244,6 +247,7 @@ ostream& operator<<(ostream& out, const Room& rhs)
                         ss << "You need a ";
                         ss << westItem;
                         ss << " to go that way.";
+		}
         }
 
 	return out << ss.str();

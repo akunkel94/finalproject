@@ -17,6 +17,81 @@ enum commands {help, search, take,  go};
 commands switchCommand(string command);
 void dispText(istream& in, ostream& out);
 
+int main()
+{
+	ifstream inRooms("rooms.txt");
+	ifstream inIntro("intro.txt");
+	ifstream inOutro("outro.txt");
+	ifstream inHelp("help.txt");
+
+	Cave cave;
+	Room room;
+	string input, command, temp;
+	stringstream ss;
+	bool gameover = false;
+	string inventory[100];
+	int inventoryIndex = 0;
+
+	cave.init(inRooms);
+
+	dispText(inIntro, cout);
+
+	cout << endl;
+	cout << room;
+
+	cout << "\n>>> ";
+	cin >> input;
+	ss.str(input);
+	ss >> command;
+	while(!cin.fail() && !gameover)
+	{
+
+		switch(switchCommand(command))
+		{
+		case help:
+			dispText(inHelp, cout);
+		break;
+		case search:
+			temp = room.search(input, cout);
+			if(temp != "0")
+			{
+				inventory[inventoryIndex] = temp;
+				inventoryIndex++;
+			}
+		break;
+		case take:
+			temp = room.take(input, cout);
+			if(temp != "0")
+			{
+				inventory[inventoryIndex] = temp;
+				inventoryIndex++;
+			}
+		break;
+		case go:
+			room = cave.go(input, inventory, inventoryIndex, cout);
+		break;
+		default:
+			dispText(inHelp, cout);
+		break;
+		}
+
+		gameover = cave.gameover();
+
+		if(!gameover)
+		{
+			cout << "\n>>> ";
+			cin >> input;
+			ss.str(input);
+			ss >> command;
+		}
+	}
+
+	cout << endl;
+	dispText(inOutro, cout);
+
+	return 0;
+}
+
 commands switchCommand(string command)
 {
 	commands com;
@@ -57,79 +132,4 @@ void dispText(istream& in, ostream& out)
 
 		getline(in, line, '\n');
 	}
-}
-
-int main()
-{
-	ifstream inRooms("rooms.txt");
-	ifstream inIntro("intro.txt");
-	ifstream inOutro("outro.txt");
-	ifstream inHelp("help.txt");
-
-	Cave cave;
-	Room* room;
-	string input, command, temp;
-	stringstream ss;
-	bool gameover = false;
-	string inventory[100];
-	int inventoryIndex = 0;
-
-	cave.init(inRooms);
-
-	dispText(inIntro, cout);
-
-	cout << endl;
-	cout << this->room;
-
-	cout << "\n\>\>\> ";
-	cin >> input;
-	ss.str(input);
-	ss >> command;
-	while(!cin.fail() && !gameover)
-	{
-
-		switch(switchCommand(command))
-		{
-		case help:
-			dispText(inHelp, cout);
-		break;
-		case search:
-			temp = this->room.search(input, cout);
-			if(temp != "0")
-			{
-				inventory[inventoryIndex] = temp;
-				inventoryIndex++;
-			}
-		break;
-		case take:
-			temp = this->room.take(input, cout);
-			if(temp != "0")
-			{
-				inventory[inventoryIndex] = temp;
-				inventoryIndex++;
-			}
-		break;
-		case go:
-			room = cave.go(input, inventory, inventoryIndex, cout);
-		break;
-		default:
-			dispText(inHelp, cout);
-		break;
-		}
-
-		gameover = cave.gameover();
-
-		if(!gameover)
-		{
-			cout << "\n\>\>\> ";
-			cin >> input;
-			ss.str(input);
-			ss >> command;
-		}
-	}
-
-	cout << endl;
-	dispText(inOutro, cout);
-
-	return 0;
 }
