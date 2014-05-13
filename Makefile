@@ -1,7 +1,14 @@
-edit : main.o
-	cc -o edit main.o
+CC=g++ -std=c++11
 
-main.o : main.cpp Cave.h Room.h
-	cc -c main.cpp
-clean :
-	rm edit main.o
+
+all: project clean
+
+project: main.o
+	$(CC) main.o -o project
+
+main.o: main.cpp
+	$(CC) -c main.cpp
+
+.PHONY: clean
+clean:
+	rm -rf *.o *.gch
