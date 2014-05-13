@@ -23,8 +23,9 @@ public:
 	void init(istream& in);
 
 	bool gameover();
+	Room* getCurrentRoom();
 	Room* findRoom(string name);
-	Room go(string input, string inventory[], int inventoryIndex, ostream& out);
+	Room* go(string input, string inventory[], int inventoryIndex, ostream& out);
 	void destruct();
 };
 
@@ -83,16 +84,21 @@ bool Cave::gameover()
 	return (currentRoom->getName() == endRoom->getName());
 }
 
+Room* Cave::getCurrentRoom()
+{
+	return currentRoom;
+}
+
 Room* Cave::findRoom(string name)
 {
 	for(int i=0; i<roomIndex; i++)
-		if(rooms[i]->getName() == currentRoom->getName())
+		if(rooms[i]->getName() == name)
 			currentRoom = rooms[i];
 
 	return currentRoom;
 }
 
-Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out)
+Room* Cave::go(string input, string inventory[], int inventoryIndex, ostream& out)
 {
 	input = input.substr(3, input.length()-3);
 	string northRoom, northItem, southRoom, southItem, eastRoom, eastItem, westRoom, westItem;
@@ -122,7 +128,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
 			{
 				currentRoom = findRoom(northRoom);
 				out << endl;
-				out << this->currentRoom;
+				out << currentRoom->getDescription();
 			}
 			else
 				out << "\nYou can't go into that room yet." << endl;
@@ -139,7 +145,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 currentRoom = findRoom(eastRoom);
                                 out << endl;
-                                out << this->currentRoom;
+                                out << currentRoom->getDescription();
                         }
                         else
                                 out << "\nYou can't go into that room yet." << endl;	
@@ -156,7 +162,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 currentRoom = findRoom(southRoom);
                                 out << endl;
-                                out << this->currentRoom;
+                                out << currentRoom->getDescription();
                         }
                         else
                                 out << "\nYou can't go into that room yet." << endl;
@@ -173,7 +179,7 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
                         {
                                 currentRoom = findRoom(westRoom);
                                 out << endl;
-                                out << this->currentRoom;
+                                out << currentRoom->getDescription();
                         }
                         else
                                 out << "\nYou can't go into that room yet." << endl;
@@ -181,6 +187,8 @@ Room Cave::go(string input, string inventory[], int inventoryIndex, ostream& out
 		else
 			out << "\nThere is no room in that direction." << endl;
 	}
+
+	return currentRoom;
 }
 
 void Cave::destruct()

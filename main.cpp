@@ -30,7 +30,7 @@ int main()
 	ifstream inHelp("help.txt");
 
 	Cave cave;
-	Room room;
+	Room* room;
 	string input, command, temp;
 	stringstream ss;
 	bool gameover = false;
@@ -41,11 +41,13 @@ int main()
 
 	dispText(inIntro, cout);
 
+	room = cave.getCurrentRoom();
+
 	cout << endl;
-	cout << room;
+	cout << room->getDescription() << endl;
 
 	cout << "\n>>> ";
-	cin >> input;
+	getline(cin, input);
 	ss.str(input);
 	ss >> command;
 	while(!cin.fail() && !gameover)
@@ -57,7 +59,7 @@ int main()
 			dispText(inHelp, cout);
 		break;
 		case search:
-			temp = room.search(input, cout);
+			temp = room->search(input, cout);
 			if(temp != "0")
 			{
 				inventory[inventoryIndex] = temp;
@@ -65,7 +67,7 @@ int main()
 			}
 		break;
 		case take:
-			temp = room.take(input, cout);
+			temp = room->take(input, cout);
 			if(temp != "0")
 			{
 				inventory[inventoryIndex] = temp;
@@ -85,7 +87,7 @@ int main()
 		if(!gameover)
 		{
 			cout << "\n>>> ";
-			cin >> input;
+			getline(cin, input);
 			ss.str(input);
 			ss >> command;
 		}

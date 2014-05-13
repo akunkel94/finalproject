@@ -38,11 +38,12 @@ public:
 	string getContainerItem() const;
 	string getRoom(string direction) const;
 	string getRoomItem(string direction) const;
+	string getDescription() const;
 
 	string take(string input, ostream& out);
 	string search(string input, ostream& out);
 
-	friend ostream& operator<<(ostream& out, const Room& rhs);
+	//friend ostream& operator<<(ostream& out, const Room& rhs);
 };
 
 Room::Room() {}
@@ -51,6 +52,7 @@ Room::Room(string name, string desc, string item, string container, string conta
 {
 	this->name = name;
 	this->desc = desc;
+	this->item = item;
 	this->container = container;
 	this->containerItem = containerItem;
 	this->northRoom = northRoom;
@@ -115,6 +117,103 @@ string Room::getRoomItem(string direction) const
         return out;
 }
 
+string Room::getDescription() const
+{
+	stringstream ss;
+	/*string name, item, container, northRoom, northItem, southRoom, southItem, eastRoom, eastItem, westRoom, westItem;
+	name = rhs.getName();
+	item = rhs.getItem();
+	container = rhs.getContainer();
+        northRoom = rhs.getRoom("NORTH");
+        southRoom = rhs.getRoom("SOUTH");
+        eastRoom = rhs.getRoom("EAST");
+        westRoom = rhs.getRoom("WEST");
+        northItem = rhs.getRoomItem("NORTH");
+        southItem = rhs.getRoomItem("SOUTH");
+        eastItem = rhs.getRoomItem("EAST");
+        westItem = rhs.getRoomItem("WEST");*/
+
+	ss << "You have entered the ";
+	ss << name;
+	ss << ".";
+	if(item != "0")
+	{
+		ss << " You see a ";
+		ss << item;
+		ss << " on the ground.";
+	}
+	if(container != "0" && item != "0")
+	{
+		ss << " You also see a ";
+		ss << container;
+		ss << ".";
+	}
+	else if(container != "0")
+	{
+		ss << " You see a ";
+		ss << container;
+		ss << ".";
+	}
+
+	if(northRoom != "0")
+	{
+		ss << " To the NORTH is the ";
+		ss << northRoom;
+		ss << ".";
+
+		if(northItem != "0")
+		{
+			ss << "You need a ";
+			ss << northItem;
+			ss << " to go that way.";
+		}
+	}
+
+	if(eastRoom != "0")
+    {
+		ss << " To the EAST is the ";
+                ss << eastRoom;
+                ss << ".";
+
+                if(eastItem != "0")
+                {
+                        ss << "You need a ";
+                        ss << eastItem;
+                        ss << " to go that way.";
+		}
+    }
+
+	if(southRoom != "0")
+    {
+                ss << " To the SOUTH is the ";
+                ss << southRoom;
+                ss << ".";
+
+                if(southItem != "0")
+                {
+                        ss << "You need a ";
+                        ss << southItem;
+                        ss << " to go that way.";
+		}
+    }
+
+	if(westRoom != "0")
+    {
+                ss << " To the WEST is the ";
+                ss << westRoom;
+                ss << ".";
+
+                if(westItem != "0")
+                {
+                        ss << "You need a ";
+                        ss << westItem;
+                        ss << " to go that way.";
+		}
+    }
+
+	return ss.str();
+}
+
 
 
 string Room::take(string input, ostream& out)
@@ -172,7 +271,7 @@ string Room::search(string input, ostream& out)
 	return temp;
 }
 
-ostream& operator<<(ostream& out, const Room& rhs)
+/*ostream& operator<<(ostream& out, const Room& rhs)
 {
 	string name, item, container, northRoom, northItem, southRoom, southItem, eastRoom, eastItem, westRoom, westItem;
 	name = rhs.getName();
@@ -266,6 +365,6 @@ ostream& operator<<(ostream& out, const Room& rhs)
         }
 
 	return out;
-}
+}*/
 
 #endif
