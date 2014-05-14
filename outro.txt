@@ -1,5 +1,5 @@
 You figured it out!! You worked your way through the maze picking up different items in your inventory and found the fuse to fix the elevator. 
-You feel a quick jerk in the elevator, but now feel the motion of elevator
-rising upward. 
-The elevator doors open and you see you are no longer kept in the MAZE and the
-darkness is left behind!
+You feel a quick jerk of the elevator and it begins to move upwards. 
+The elevator doors open and you see that you have escaped the MAZE and the
+darkness is finally left behind!
+
