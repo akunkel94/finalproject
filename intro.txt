@@ -1,10 +1,21 @@
-You wake up in a dark cavern after getting kidnapped. You don’t exactly how
+ _______   _    _   _____       ___    ___       ___       _____    _____ 
+|__   __| | |  | | |  ___|     |   \  /   |     / _ \     |___  |  |  ___|
+   | |    | |__| | | |___      | |\ \/ /| |    / /_\ \       / /   | |___
+   | |    |  __  | |  ___|     | | \  / | |   / _____ \     / /    |  ___|
+   | |    | |  | | | |___      | |  \/  | |  / /     \ \   / /___  | |___
+   |_|    |_|  |_| |_____|     |_|      |_| /_/       \_\ |______| |_____|
+
+You wake up in a dark cavern after getting kidnapped. You don’t know how
 you got here but it is up to you to figure out a way to get out. 
-There are rooms around you with tools, keys etc. around you to help you access
-certain rooms. This game is called…. THE MAZE. 
-You don’t know which room access what and there are different directions you
-are allowed to go and your job is to find out which routes throughout the maze
-accesses you to DAYLIGHT. Remember, you can call the command 'help' at any
+There are rooms around you with tools, keys etc. which you need to access
+certain rooms. 
+The commands at your exposal are:
+	-go [NORTH, SOUTH, EAST, WEST]
+	-take [ITEM]
+	-search [SEARCHABLE ITEM]
+	-help
+
+Remember, you can call the command 'help' at any
 time to review the commands at your disposal.
 
-GoodLuck!
+Good Luck!
